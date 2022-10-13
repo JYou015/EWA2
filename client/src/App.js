@@ -32,7 +32,7 @@ function App() {
 
 useEffect(() => {
     console.log("aaa");
-    fetch("/api")
+    fetch("/apil")
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);
