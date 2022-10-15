@@ -1,8 +1,10 @@
 // server/index.js
 const express = require("express");
+const http = require('http')
 const PORT = process.env.PORT || 5000;
 const path = require("path");
-const app = express();
+const app = require('./app.js');
+
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '../client/build')));
@@ -11,20 +13,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-app.post('/calc', (req, res) => {
-    var r = {}; 
-    const sum = req.body.items.reduce((accumulator, object) => {
-      return accumulator + object.quantity * object.price;
-    }, 0);
-    r.sum = sum; 
-    r.tax = sum * 0.13;
-    r.total = r.sum + r.tax;
+const server = http.createServer(app);
 
-    res.json(r);
-});
-
-
-
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });

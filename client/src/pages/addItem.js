@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import React from 'react'
+import Button from '@mui/material/Button';
 
 const AddTask = ({ onAdd }) => {
   const [product, setProduct] = useState('')
@@ -23,35 +24,28 @@ const AddTask = ({ onAdd }) => {
 
   return (
     <form className='add-form' onSubmit={onSubmit}>
-      <div className='form-control'>
         <label>Task</label>
         <input
           type='text'
-          placeholder='Add Task'
+          placeholder='Add Product'
           value={product}
           onChange={(e) => setProduct(e.target.value)}
         />
-      </div>
-      <div className='form-control'>
-        <label>quant & Time</label>
+        <label>Quantity</label>
         <input
           type='number'
-          placeholder='Add quant & Time'
+          placeholder='Quantity'
           value={quantity}
           onChange={(e) => setQuantity(parseInt(e.target.value))}
         />
-      </div>
-      <div className='form-control form-control-check'>
-        <label>Set price</label>
+        <label>Price</label>
         <input
           type='number'
-          placeholder='Add price'
+          placeholder='Price'
           value={price}
           onChange={(e) => setPrice(parseFloat(e.target.value))}
         />
-      </div>
-
-      <input type='submit' value='Save Item' className='btn btn-block' />
+      <Button type='submit' variant="contained" size = "small"> Save Item</Button>
     </form>
   )
 }

@@ -18,10 +18,25 @@ function Items({items, onDelete, tot}) {
         {items.map((item) => (
             <Item key={item.id} item={item} onDelete={onDelete}/>
         ))}
+      <Grid item xs={9}>
+        <Paper elevation={0} sx={{textAlign: 'center', fontWeight: 600}}>Subtotal</Paper>
+      </Grid>
+      <Grid item xs={3}>
+        <Paper elevation={0} sx={{fontWeight: 600}}>${tot.sum}</Paper>
+      </Grid>
+      <Grid item xs={9}>
+        <Paper elevation={0} sx={{textAlign: 'center' , fontWeight: 600}}>Tax (13%)</Paper>
+      </Grid>
+      <Grid item xs={3}>
+        <Paper elevation={0} sx={{fontWeight: 600}}>${tot.tax}</Paper>
+      </Grid>
+      <Grid item xs={9}>
+        <Paper elevation={0} sx={{textAlign: 'center' , fontWeight: 600}}>Total</Paper>
+      </Grid>
+      <Grid item xs={3}>
+        <Paper elevation={0} sx={{fontWeight: 600}}>${tot.total}</Paper>
+      </Grid>
     </Grid>
-    <div>{tot.sum}</div>
-    <div>{tot.tax}</div>
-    <div>{tot.total}</div>
     </>
   );
 }

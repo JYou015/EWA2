@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node_modules/.bin/ava tests/**/*.test.js --verbose",
+    "test:watch": "node_modules/.bin/ava --verbose --watch",
     "start": "node server/index.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
@@ -12,6 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ava": "^4.3.3",
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "supertest": "^6.3.0"
   }
 }
