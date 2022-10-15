@@ -7,6 +7,10 @@ app.use(express.json());
 
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
+
 app.post('/calc', (req, res) => {
     var r = {}; 
     const sum = req.body.items.reduce((accumulator, object) => {
